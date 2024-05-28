@@ -1,3 +1,39 @@
-#heading {
-    color: #e23838;
+.header {
+  background: #f0f0f0;
+  border: 1px solid #e7e6e6;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.nav-links > ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-links > ul > li {
+  margin-left: 60px;
+  list-style: none;
+}
+
+.res-container {
+  padding: 10px;
+  border: 1px solid blue;
+  display: flex;
+  flex-wrap: wrap ;
+}
+
+.res-card {
+  border: 1px solid black;
+  width: 250px;
+  background-color: #f0f0f0;
+  padding: 5px;
+  margin: 10px;
+  font-family: Basis_Grotesque_Pro_Bold;
+}
+
+.res-card > img {
+  width: inherit;
 }
