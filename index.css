@@ -22,7 +22,7 @@
   padding: 10px;
   border: 1px solid blue;
   display: flex;
-  flex-wrap: wrap ;
+  flex-wrap: wrap;
 }
 
 .res-card {
@@ -36,4 +36,12 @@
 
 .res-card > img {
   width: inherit;
+}
+
+.filters {
+  margin: 10px auto;
+}
+
+.filter-btn {
+  cursor: pointer;
 }
