@@ -43,13 +43,19 @@ body {
 }
 
 .res-card {
-  border: 1px solid black;
+  all: unset;
+  border: 1px solid #d5d0d0;
   width: 300px;
   background-color: #f0f0f0;
   padding: 5px;
   margin: 10px;
-  font-family: Basis_Grotesque_Pro_Bold;
+  font-family: 'Times New Roman', Times, serif;
   border-radius: 38px;
+  cursor: pointer;
+}
+
+.res-card:hover {
+  border: 1px solid black;
 }
 
 .res-card > img {
@@ -103,4 +109,30 @@ body {
   width: 300px;
   border: 1px solid #bdbdbd;
   height: 25px;
+}
+
+/* Menu Page */
+.menu-container {
+  margin: 40px 150px 0 150px;
+}
+
+.res-detail {
+  border: 1px solid #ded8d8;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  background-color: #f0f0f0;
+  padding: 15px;
+}
+
+.res-detail > div > h1 {
+  margin: 0 auto;
+}
+
+.res-detail > div > p {
+  margin-top: 0px;
+}
+
+.res-detail > div > img {
+  width: 160px;
 }

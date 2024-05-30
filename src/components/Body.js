@@ -8,8 +8,6 @@ const Body = () => {
   const [orgRestaurantsList, setOrgRestaurantsList] = useState([]);
   const [searchText, setSearchText] = useState('');
 
-  console.log(orgRestaurantsList);
-
   useEffect(() => {
     fetchData();
   }, []);
