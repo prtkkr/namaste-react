@@ -136,3 +136,9 @@ body {
 .res-detail > div > img {
   width: 160px;
 }
+
+.user-card {
+  border: 1px solid #ded8d8;
+  padding: 10px;
+  margin-bottom: 15px;
+}
