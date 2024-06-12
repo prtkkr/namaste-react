@@ -1,26 +1,26 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
-import logo from '../../images/logo.jpeg';
+import logo from '../../images/logo.png';
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState('Login');
   const status = useOnlineStatus();
   return (
-    <div className="header">
-      <div className="logo">
-        <img style={{ width: '100px' }} src={logo}></img>
+    <div className="border p-4 bg-orange-200 shadow-lg flex justify-between align-middle">
+      <div className="w-28">
+        <img src={logo}></img>
       </div>
-      <div className="nav-links">
-        <ul>
-          <li>Online Status {status ? '🟢' : '🔴'}</li>
-          <li>
-            <Link to={'/about'}>About Us</Link>
-          </li>
-          <li>
-            <Link to={'/contact'}>Contact</Link>
-          </li>
-          <li>Cart</li>
+      <ul className="flex items-center">
+        <li className="px-3">Online Status {status ? '🟢' : '🔴'}</li>
+        <li className="px-3">
+          <Link to={'/about'}>About Us</Link>
+        </li>
+        <li className="px-3">
+          <Link to={'/contact'}>Contact</Link>
+        </li>
+        <li className="px-3">Cart</li>
+        <li className="px-3">
           <button
             className="login-btn"
             onClick={() => {
@@ -29,8 +29,8 @@ const Header = () => {
           >
             {loginBtn}
           </button>
-        </ul>
-      </div>
+        </li>
+      </ul>
     </div>
   );
 };

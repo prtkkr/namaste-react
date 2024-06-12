@@ -27,27 +27,28 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filters">
-        <div>
-          <button
-            className="filter-btn"
-            onClick={() => {
-              let filteredList = orgRestaurantsList.filter((x) => x.info.avgRating >= 4.4);
-              setRestaurantsList(filteredList);
-            }}
-          >
-            Top Rated Restaurants
-          </button>
-        </div>
+      <div className="p-5 flex justify-between items-baseline">
+        <button
+          className="bg-green-300 px-3 py-2 rounded-lg"
+          onClick={() => {
+            let filteredList = orgRestaurantsList.filter((x) => x.info.avgRating >= 4.4);
+            setRestaurantsList(filteredList);
+          }}
+        >
+          Top Rated Restaurants
+        </button>
         <div>
           <input
+            className="w-72 p-1 mr-5 border-2 border-gray-400 border-spacing-3 rounded-lg"
             type="search"
+            placeholder="enter restaurant name"
             value={searchText}
             onChange={(event) => {
               setSearchText(event.target.value);
             }}
           />
           <button
+            className="bg-green-300 px-3 py-2 rounded-lg"
             onClick={() => {
               let filteredList = orgRestaurantsList.filter((x) =>
                 x.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -59,8 +60,8 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <h3 className="container-title">Top Restaurants Near You</h3>
-      <div className="res-container">
+      <h3 className="mt-4 p-4 text-lg font-bold">Top Restaurants Near You</h3>
+      <div className="px-4 flex flex-wrap">
         {restaurantsList.map((res) => (
           <RestaurantCard resData={res} key={res.info.id} />
         ))}
