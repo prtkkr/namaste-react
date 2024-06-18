@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard, { withPromotedLabel } from './RestaurantCard';
 import { SWIGGY_URL } from '../utils/constants';
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 
 const Body = () => {
   const [restaurantsList, setRestaurantsList] = useState([]);
@@ -22,6 +23,8 @@ const Body = () => {
     setOrgRestaurantsList(list1?.length ? list1 : list2?.length ? list2 : list3?.length ? list3 : list4);
     setRestaurantsList(list1?.length ? list1 : list2?.length ? list2 : list3?.length ? list3 : list4);
   };
+
+  const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
 
   return !restaurantsList.length ? (
     <Shimmer />
@@ -63,7 +66,13 @@ const Body = () => {
       <h3 className="mt-4 p-4 text-lg font-bold">Top Restaurants Near You</h3>
       <div className="px-4 flex flex-wrap">
         {restaurantsList.map((res) => (
-          <RestaurantCard resData={res} key={res.info.id} />
+          <Link
+            className="w-[310px] p-3 mx-3 mb-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 shadow-md"
+            key={res.info.id}
+            to={`/restaurant/${res.info.id}`}
+          >
+            {res.info.isOpen ? <PromotedRestaurantCard resData={res} /> : <RestaurantCard resData={res} />}
+          </Link>
         ))}
       </div>
     </div>
