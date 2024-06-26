@@ -4,6 +4,7 @@ import { SWIGGY_URL } from '../utils/constants';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 
+// To display body of the application
 const Body = () => {
   const [restaurantsList, setRestaurantsList] = useState([]);
   const [orgRestaurantsList, setOrgRestaurantsList] = useState([]);
@@ -13,6 +14,7 @@ const Body = () => {
     fetchData();
   }, []);
 
+  // Extract Restaurant List from Response
   const fetchData = async () => {
     let response = await fetch(SWIGGY_URL);
     let jsonData = await response.json();
@@ -24,12 +26,14 @@ const Body = () => {
     setRestaurantsList(list1?.length ? list1 : list2?.length ? list2 : list3?.length ? list3 : list4);
   };
 
+  // Calling Higher Order Component => Showing Online Icon for Restaurants
   const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
 
   return !restaurantsList.length ? (
     <Shimmer />
   ) : (
     <div className="body">
+      {/* Search And Filter */}
       <div className="p-5 flex justify-between items-baseline">
         <button
           className="bg-green-300 px-3 py-2 rounded-lg"
@@ -63,6 +67,7 @@ const Body = () => {
           </button>
         </div>
       </div>
+      {/* Restaurants List */}
       <h3 className="mt-4 p-4 text-lg font-bold">Top Restaurants Near You</h3>
       <div className="px-4 flex flex-wrap">
         {restaurantsList.map((res) => (
