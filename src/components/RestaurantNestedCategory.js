@@ -6,8 +6,8 @@ const RestaurantNestedCategory = (props) => {
   const { categories, title } = data?.card?.card;
 
   return (
-    <div className="mt-2">
-      <h1 className="text-lg font-bold">{title}</h1>
+    <div className="mt-4 mb-3">
+      <h1 className="text-xl font-bold">{title}</h1>
       {categories.map((category) => (
         <RestaurantCategory
           key={category.title}
@@ -16,7 +16,7 @@ const RestaurantNestedCategory = (props) => {
           setCategoryIndex={setCategoryIndex}
         />
       ))}
-      <div className="h-4 mb-2 bg-gray-200"></div>
+      <div className="h-4 mb-2 bg-gray-400"></div>
     </div>
   );
 };

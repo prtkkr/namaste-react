@@ -6,16 +6,21 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './src/components/Error';
 import RestaurantMenu from './src/components/RestaurantMenu';
 import Shimmer from './src/components/Shimmer';
+import { Provider } from 'react-redux';
+import AppStore from './src/store/AppStore';
+import Cart from './src/components/Cart';
 // Lazy Loading
 const AboutUs = lazy(() => import('./src/components/AboutUs'));
 const Contact = lazy(() => import('./src/components/Contact'));
 
 const AppLayout = () => {
   return (
-    <div className="app-container">
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={AppStore}>
+      <div className="app-container">
+        <Header />
+        <Outlet />
+      </div>
+    </Provider>
   );
 };
 
@@ -49,6 +54,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/restaurant/:id',
         element: <RestaurantMenu />,
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
     ],
   },

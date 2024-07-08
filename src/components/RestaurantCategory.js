@@ -32,7 +32,7 @@ const RestaurantCategory = (props) => {
       {showItems && (
         <div>
           {itemCards.map((item) => (
-            <MenuList data={item} key={item?.card?.info?.id} />
+            <MenuList data={item} key={item?.card?.info?.id} viewAddButton={true} />
           ))}
         </div>
       )}

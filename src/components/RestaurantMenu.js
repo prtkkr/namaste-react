@@ -14,6 +14,18 @@ const RestaurantMenu = () => {
   const menuData = useGetRestaurantMenu(params.id);
   // State Variable to Toggle Menu List
   const [showMenuIndex, setShowMenuIndex] = useState(0);
+  // To store previously opened Category
+  const [previousIndex, setPreviousIndex] = useState(0);
+  // To show/hide Category List
+  const toggleCategoryList = (index) => {
+    if (previousIndex === index) {
+      setShowMenuIndex(-1);
+      setPreviousIndex(-1);
+    } else {
+      setShowMenuIndex(index);
+      setPreviousIndex(index);
+    }
+  };
 
   if (!menuData) return <Shimmer />;
 
@@ -52,7 +64,7 @@ const RestaurantMenu = () => {
                 data={category}
                 key={title}
                 showItems={index === showMenuIndex && true}
-                setCategoryIndex={() => setShowMenuIndex(index)}
+                setCategoryIndex={() => toggleCategoryList(index)}
               />
             );
           } else
@@ -61,7 +73,7 @@ const RestaurantMenu = () => {
                 data={category.card.card}
                 key={category?.card?.card?.title}
                 showItems={index === showMenuIndex && true}
-                setCategoryIndex={() => setShowMenuIndex(index)}
+                setCategoryIndex={() => toggleCategoryList(index)}
               />
             );
         })}

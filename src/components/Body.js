@@ -16,14 +16,19 @@ const Body = () => {
 
   // Extract Restaurant List from Response
   const fetchData = async () => {
-    let response = await fetch(SWIGGY_URL);
-    let jsonData = await response.json();
-    let list1 = jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    let list2 = jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    let list3 = jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    let list4 = jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    setOrgRestaurantsList(list1?.length ? list1 : list2?.length ? list2 : list3?.length ? list3 : list4);
-    setRestaurantsList(list1?.length ? list1 : list2?.length ? list2 : list3?.length ? list3 : list4);
+    try {
+      let response = await fetch(SWIGGY_URL);
+      let jsonData = await response.json();
+      let list1 = jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      let list2 = jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      let list3 = jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      let list4 = jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      setOrgRestaurantsList(list1?.length ? list1 : list2?.length ? list2 : list3?.length ? list3 : list4);
+      setRestaurantsList(list1?.length ? list1 : list2?.length ? list2 : list3?.length ? list3 : list4);
+      if (!response.ok) return new Error(response.status);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Calling Higher Order Component => Showing Online Icon for Restaurants
@@ -72,7 +77,7 @@ const Body = () => {
       <div className="px-4 flex flex-wrap">
         {restaurantsList.map((res) => (
           <Link
-            className="w-[310px] p-3 mx-3 mb-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 shadow-md"
+            className="w-[308px] p-3 mx-3 mb-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 shadow-md"
             key={res.info.id}
             to={`/restaurant/${res.info.id}`}
           >
