@@ -7,6 +7,12 @@ class UserClass extends React.Component {
     this.state = {
       count: 0,
     };
+
+    this.onBtnClick = this.onBtnClick.bind(this);
+  }
+
+  onBtnClick() {
+    this.setState({ count: this.state.count + 1 });
   }
 
   render() {
@@ -19,13 +25,7 @@ class UserClass extends React.Component {
         <p>📍 {location}</p>
         <p>📞 {contact}</p>
         <div>
-          <button
-            onClick={() => {
-              this.setState({
-                count: this.state.count + 1,
-              });
-            }}
-          >
+          <button className="p-2 m-2 border" onClick={this.onBtnClick}>
             Increment
           </button>
           <h4>{count}</h4>

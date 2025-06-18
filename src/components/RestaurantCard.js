@@ -2,6 +2,7 @@ import { DEFAULT_IMG_URL, IMG_URL } from '../utils/constants';
 
 // To display Restaurant Details on main page
 const RestaurantCard = (props) => {
+  console.log(props.resData);
   const { id, name, cuisines, avgRating, cloudinaryImageId, costForTwo, sla } = props?.resData?.info;
   return (
     <>
